@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/admin.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+<title>All Issued Record</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="sidebar">
+		<div class="logo-details">
+			<i class='bx bxl-firebase'></i> <span class="logo_name">BookHub</span>
+		</div>
+		<ul class="nav-links">
+			<li><a href="/returnAdminDashboard"> <i
+					class='bx bx-grid-alt'></i> <span class="links_name">DashBoard</span>
+			</a></li>
+			<li><a href="/viewAdminProfile"> <i
+					class='bx bxs-user-rectangle bx-flip-horizantal'></i> <span
+					class="links_name">My Profile</span>
+			</a></li>
+			<li><a href="/viewAllCategory"> <i class='bx bx-spreadsheet'></i>
+					<span class="links_name">Category</span>
+			</a></li>
+			<li><a href="/viewAllUsers"> <i class='bx bx-group'></i> <span
+					class="links_name">Users</span>
+			</a></li>
+			<li><a href="/adminIssueDetails" class="active"> <i
+					class='bx bx-merge'></i> <span class="links_name">View Issue
+						Books</span>
+			</a></li>
+			<li><a href="/adminReturnDetails"> <i
+					class='bx bx-minus-back'></i> <span class="links_name">View
+						Return Books</span>
+			</a></li>
+
+			<li class="log_out"><a href="/homepage"> <i
+					class='bx bx-log-out'></i> <span class="links_name">Log out</span>
+			</a></li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button">
+				<i class='bx bx-menu sidebarBtn'></i> <span class="dashboard">Dashboard</span>
+			</div>
+			
+			<div class="profile-details">
+				<i class='bx bx-user-circle'></i> <span class="admin_name"
+					th:object="${user}" th:text="${user.getName()}"></span>
+			</div>
+		</nav>
+		<div class="home-content">
+			<div class="container">
+				<div class="row mt-0" id="filter-buttons">
+					<div class="col-12">
+						<h3 class="text">All Issue Books Records </h3> 
+					</div>
+				</div>
+				<form action="#" method="post">
+
+					<div class="container my-5 col-md-12">
+						<table class="table  table-striped table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Issue ID</th>
+									<th scope="col">Book ID</th>
+									<th scope="col">Book Name</th>
+									<th scope="col">Author</th>
+									<th scope="col">User ID</th>
+									<th scope="col">User Name</th>
+									<th scope="col">Issue Date</th>
+									<th scope="col">Approvals</th>
+									<th scope="col">No of Days</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="b :${issuedetails}">
+									<td th:text="${b.id}"></td>
+									<td th:text="${b.getBook().getId()}"></td>
+									<td th:text="${b.getBook().getTitle()}"></td>
+									<td th:text="${b.getBook().getAuthor()}"></td>
+									<td th:text="${b.getUser().getId()}"></td>
+									<td th:text="${b.getUser().getName()}"></td>
+									<td th:text="${b.issuedate}"></td>
+									<td th:text="${b.approvals}"></td>
+									<td th:text="${b.period}"></td>
+									<td><a th:href="@{/issueMessage/{id}(id=${b.id})}" id="issued-book"><i
+											class="bx bx-edit"></i></a></td>
+
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function() {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else
+				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+	</script>
+	<script>
+	const loginButton = document.getElementById("issued-book");
+	
+	loginButton.addEventListener("click", (e) => {
+	        alert("The Book has been Approved to User.");
+	        
+	})
+	
+	</script>
+</body>
+</html>

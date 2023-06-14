@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" type="text/css" href="css/admin.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+
+<link rel="stylesheet"
+	href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<style>
+.home-section .dash-content {
+	padding-top: 50px;
+}
+
+.dash-content .title {
+	display: flex;
+	align-items: center;
+	margin: 60px 0 30px 0;
+}
+
+.dash-content .title i {
+	position: relative;
+	height: 35px;
+	width: 35px;
+	background-color: var(- -primary-color);
+	border-radius: 6px;
+	color: var(- -title-icon-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+}
+
+.dash-content .title .text {
+	font-size: 24px;
+	font-weight: 500;
+	color: var(- -text-color);
+	margin-left: 10px;
+}
+
+.dash-content .boxes {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.dash-content .boxes .box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 12px;
+	width: calc(100%/ 3 - 15px);
+	padding: 15px 20px;
+	background-color: #ff0000;
+	transition: var(- -tran-05);
+}
+
+.boxes .box i {
+	font-size: 35px;
+	color: var(- -text-color);
+}
+
+.boxes .box .text {
+	white-space: nowrap;
+	font-size: 18px;
+	font-weight: 500;
+	color: var(- -text-color);
+}
+
+.boxes .box .number {
+	font-size: 40px;
+	font-weight: 500;
+	color: var(- -text-color);
+}
+
+.boxes .box.box2 {
+	background-color: #00ff00;
+}
+
+.boxes .box.box3 {
+	background-color: #ffff00;
+}
+.boxes .box.box4 {
+	background-color:#ff8000;
+}
+
+.dash-content .activity .activity-data {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.activity .activity-data {
+	display: flex;
+}
+
+.activity-data .data {
+	display: flex;
+	flex-direction: column;
+	margin: 0 15px;
+}
+
+.activity-data .data-title {
+	font-size: 20px;
+	font-weight: 500;
+	color: var(- -text-color);
+}
+
+.activity-data .data .data-list {
+	font-size: 18px;
+	font-weight: 400;
+	margin-top: 20px;
+	white-space: nowrap;
+	color: var(- -text-color);
+}
+
+</style>
+
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+	<div class="sidebar">
+		<div class="logo-details">
+			<i class='bx bxl-firebase'></i> <span class="logo_name">BookHub</span>
+		</div>
+		<ul class="nav-links">
+			<li><a href="/returnAdminDashboard" class="active"> <i
+					class='bx bx-grid-alt'></i> <span class="links_name">DashBoard</span>
+			</a></li>
+			<li><a href="/viewAdminProfile"> <i
+					class='bx bxs-user-rectangle'></i> <span
+					class="links_name">My Profile</span>
+			</a></li>
+			<li><a href="/viewAllCategory"> <i class='bx bx-spreadsheet'></i>
+					<span class="links_name">Category</span>
+			</a></li>
+			<li><a href="/viewAllUsers"> <i class='bx bx-group'></i> <span
+					class="links_name">Users</span>
+			</a></li>
+			<li><a href="/adminIssueDetails"> <i class='bx bx-merge'></i> <span
+					class="links_name">View Issue Books</span>
+			</a></li>
+			<li><a href="/adminReturnDetails"> <i class='bx bx-minus-back'></i> <span
+					class="links_name">View Return Books</span>
+			</a></li>
+
+			<li class="log_out"><a href="/homepage"> <i class='bx bx-log-out'></i>
+					<span class="links_name">Log out</span>
+			</a></li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button">
+				<i class='bx bx-menu sidebarBtn'></i> <span class="dashboard">Dashboard</span>
+			</div>
+			<div class="profile-details">
+				<i class='bx bx-user-circle'></i> <span class="admin_name"
+					th:object="${user}" th:text="${user.getName()}"></span>
+			</div>
+		</nav>
+		<div class="dash-content">
+			<div class="overview">
+				<div class="title">
+					<i class="uil uil-tachometer-fast-alt"></i> <span class="text">Dashboard</span>
+				</div>
+
+				<div class="boxes">
+                    <div class="box box1">
+                        <i class="uil uil-thumbs-up"></i>
+                        <span class="text">Issue Books</span>
+                        <span class="number" th:object="${issueCount}" th:text="${issueCount}"></span>
+                    </div>
+                    <div class="box box2">
+                        <i class="uil uil-comments"></i>
+                        <span class="text">Return Books</span>
+                        <span class="number" th:object="${returnCount}" th:text="${returnCount}"></span>
+                    </div>
+                    <div class="box box3">
+                        <i class="uil uil-share"></i>
+                        <span class="text">Due Books </span>
+                        <span class="number" th:object="${dueCount}" th:text="${dueCount}"></span>
+                    </div>
+                    
+                    <div class="box box4">
+                        <i class="uil uil-comments"></i>
+                        <span class="text">Non-Approvals Books</span>
+                        <span class="number" th:object="${nonIssueCount}" th:text="${nonIssueCount}"></span>
+                    </div>
+                </div>
+			</div>
+
+			
+ <script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function() {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			}
+			else
+				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/categorystyle.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
+<title>All Genres</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="sidebar">
+		<div class="logo-details">
+			<i class='bx bxl-firebase'></i> <span class="logo_name">BookHub</span>
+		</div>
+		<ul class="nav-links">
+			<li><a href="/returnDashboard"> <i class='bx bx-grid-alt'></i>
+					<span class="links_name">DashBoard</span>
+			</a></li>
+			<li><a href="/userProfile"> <i
+					class='bx bxs-user-rectangle bx-flip-horizantal'></i> <span
+					class="links_name">My Profile</span>
+			</a></li>
+			<li><a href="/viewAllCategory" class="active"> <i
+					class='bx bx-spreadsheet'></i> <span class="links_name">Category</span>
+			</a></li>
+			<li><a href="/viewIssueBook"> <i class='bx bx-merge'></i> <span
+					class="links_name">Issue Books</span>
+			</a></li>
+			<li><a href="/viewReturnBook"> <i class='bx bx-minus-back'></i>
+					<span class="links_name">Return Books</span>
+			</a></li>
+			<li><a href="/viewReserveBook"> <i class='bx bxs-bookmark'></i> <span
+					class="links_name">Reserved Books</span>
+			</a></li>
+
+			<li class="log_out"><a href="/homepage"> <i
+					class='bx bx-log-out'></i> <span class="links_name">Log out</span>
+			</a></li>
+		</ul>
+	</div>
+	<section class="home-section">
+		<nav>
+			<div class="sidebar-button">
+				<i class='bx bx-menu sidebarBtn'></i> <span class="dashboard">Dashboard</span>
+			</div>
+			
+			<div class="profile-details">
+				<i class='bx bx-user-circle'></i> <span class="admin_name"
+					th:object="${user}" th:text="${user.getName()}"></span>
+			</div>
+		</nav>
+		<div class="home-content">
+			<div class="container">
+				<!-- Images Filter Buttons Section-->
+				<div class="row mt-1" id="filter-buttons">
+					<div class="col-12">
+						<h3 class="text">All Category</h3> 
+
+					</div>
+				</div>
+				<!-- Filterable Images / Cards Section -->
+				<div class="row px-2 mt-4 gap-3" id="filterable-cards">
+					<div class="card p-0" data-name="nature">
+						<a href="/allActionList"><img src="imagefiles/images.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Adventure</h6>
+							<p class="card-text">This genre of literature that revolves
+								around exciting and daring experiences.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="nature">
+						<a href="/allComicsList"><img src="imagefiles/image3.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Comics</h6>
+							<p class="card-text">These books are a form of sequential art
+								that combines illustrations and text to tell stories.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="nature">
+						<a href="/allHistoryList"><img src="imagefiles/image4.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">History</h6>
+							<p class="card-text">These books are literary works delve
+								into the past to explore significant events, civilizations and
+								more.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="cars">
+						<a href="/allJournalsList"><img src="imagefiles/image5.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Technology</h6>
+							<p class="card-text">These books provide insights into the
+								history, trends, innovations, and future possibilities of
+								technology.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="cars">
+						<a href="/allFantasyList"><img src="imagefiles/image6.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Fantasy & Science Fiction</h6>
+							<p class="card-text">These books transport readers to
+								imaginative worlds and explore beyond the boundaries of reality.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="cars">
+						<a href="/allNonFictionList"><img src="imagefiles/image8.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Non-Fiction</h6>
+							<p class="card-text">These books encompass a wide range
+								of literary works that provide factual information, insights,
+								and analysis about real-world subjects.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="people">
+						<a href="/allLiteratureList"><img src="imagefiles/image7.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Literature & Fiction</h6>
+							<p class="card-text">These books encompass a
+								rich and diverse of literary works that explore the human
+								experience through imaginative storytelling.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="people">
+						<a href="/allBusinessList"><img src="imagefiles/image9.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Business & Economics</h6>
+							<p class="card-text">These books encompass a
+								range of literature that provides insights, strategies,
+								and analysis related to aspects of the business world,
+								entrepreneurship, and economic systems.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="people">
+						<a href="/allMysteryList"><img src="imagefiles/image10.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Crime,Thriller & Mystery</h6>
+							<p class="card-text">These books are
+								gripping and suspenseful that captivate readers
+								with intriguing plots, complex characters, and suspenseful
+								storytelling.</p>
+						</div>
+					</div>
+					<div class="card p-0" data-name="people">
+						<a href="/allSportsList"><img src="imagefiles/image11.jpg"
+							alt="img" class="image"></a>
+						<div class="card-body">
+							<h6 class="card-title">Sports</h6>
+							<p class="card-text">These books provide insights into the
+								world of sports, its impact on society, and the personal
+								journeys of athletes.</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function() {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else
+				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+	</script>
+</body>
+</html>
